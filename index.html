@@ -281,13 +281,22 @@ window.onload=()=>{
 async function loadData(){
   setLoading(true);
   try{
-    const url='https://corsproxy.io/?'+encodeURIComponent(SHEET_URL);
-    const r=await fetch(url);
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    allData=parseCSV(await r.text());
+    // Cache-busting: timestamp per forzare richiesta fresca ad ogni aggiornamento
+    const bustUrl = SHEET_URL + '&_t=' + Date.now();
+    const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(bustUrl);
+    const r = await fetch(proxyUrl, {
+      cache: 'no-store',
+      headers: {'Cache-Control': 'no-cache, no-store, must-revalidate', 'Pragma': 'no-cache'}
+    });
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    const text = await r.text();
+    if(!text || text.trim().length === 0) throw new Error('Foglio vuoto o non raggiungibile');
+    allData = parseCSV(text);
     processData();
-    showToast('Dati aggiornati ✓','success');
-  }catch(e){showToast('Errore: '+e.message,'error');console.error(e);}
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString('it-IT', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    showToast('Aggiornato alle ' + timeStr + ' ✓', 'success');
+  }catch(e){showToast('Errore nel caricamento: '+e.message,'error');console.error(e);}
   finally{setLoading(false);}
 }
 
