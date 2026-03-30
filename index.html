@@ -7,123 +7,101 @@
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --teal:#00475d;
-  --teal-light:#005f7a;
-  --teal-dark:#003040;
-  --accent:#f0a500;
-  --accent2:#00b8d9;
-  --bg:#eef4f6;
-  --surface:#fff;
-  --surface2:#f4f9fb;
-  --text:#1a2e38;
-  --muted:#7a9aaa;
-  --border:#d0e4eb;
-  --red:#e05050;
-  --green:#2eb87b;
-  --orange:#f0a500;
-  --radius:14px;
-  --shadow:0 4px 24px rgba(0,71,93,.10);
+  --teal:#00475d;--teal-light:#005f7a;--teal-dark:#003040;
+  --accent:#f0a500;--accent2:#00b8d9;
+  --bg:#eef4f6;--surface:#fff;--surface2:#f4f9fb;
+  --text:#1a2e38;--muted:#7a9aaa;--border:#d0e4eb;
+  --red:#e05050;--green:#2eb87b;--orange:#f0a500;
+  --radius:14px;--shadow:0 4px 24px rgba(0,71,93,.10);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
-/* ── HEADER ── */
-header{background:var(--teal);padding:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.2)}
+header{background:var(--teal);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.2)}
 .header-inner{max-width:1400px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
 .logo-wrap{display:flex;flex-direction:column;line-height:1}
 .logo-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;letter-spacing:4px;text-transform:uppercase}
 .logo-sub{font-size:9px;color:rgba(255,255,255,.45);letter-spacing:3px;text-transform:uppercase;margin-top:3px}
-.header-actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s;text-decoration:none}
-.btn-white{background:#fff;color:var(--teal)}
-.btn-white:hover{background:#e8f4f8}
-.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}
-.btn-outline:hover{background:rgba(255,255,255,.1)}
-.btn-accent{background:var(--accent);color:#fff}
-.btn-accent:hover{background:#d4920a}
-#refresh-btn svg{transition:transform .4s}
+.header-center{flex:1;text-align:center}
+.header-date-text{font-size:13px;color:rgba(255,255,255,.65);font-weight:500}
+.header-actions{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;cursor:pointer;border:none;transition:all .2s}
+.btn-white{background:#fff;color:var(--teal)}.btn-white:hover{background:#e8f4f8}
+.btn-outline{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.3)}.btn-outline:hover{background:rgba(255,255,255,.1)}
 #refresh-btn.spinning svg{animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── CONTENT ── */
 .container{max-width:1400px;margin:0 auto;padding:28px 24px}
 
-/* ── CONFIG BANNER ── */
-.config-banner{background:linear-gradient(135deg,var(--teal),var(--teal-light));border-radius:var(--radius);padding:24px 28px;margin-bottom:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.config-banner .icon{font-size:32px;flex-shrink:0}
-.config-banner h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:4px}
-.config-banner p{font-size:13px;color:rgba(255,255,255,.7);margin-bottom:12px}
-.url-input-row{display:flex;gap:8px;flex-wrap:wrap}
-#sheet-url{flex:1;min-width:240px;padding:10px 14px;border-radius:8px;border:none;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:rgba(255,255,255,.15);color:#fff}
-#sheet-url::placeholder{color:rgba(255,255,255,.4)}
-#sheet-url:focus{background:rgba(255,255,255,.25)}
-.config-actions{display:flex;gap:8px;flex-wrap:wrap}
+/* HERO */
+.today-hero{background:linear-gradient(135deg,var(--teal) 0%,var(--teal-light) 60%,#007a9a 100%);border-radius:var(--radius);padding:26px 30px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;position:relative;overflow:hidden}
+.today-hero::before{content:'';position:absolute;right:-40px;top:-40px;width:200px;height:200px;background:rgba(255,255,255,.04);border-radius:50%}
+.today-hero::after{content:'';position:absolute;right:40px;bottom:-60px;width:150px;height:150px;background:rgba(255,255,255,.03);border-radius:50%}
+.hero-left{position:relative;z-index:1}
+.hero-label{font-size:9px;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:3px;margin-bottom:6px}
+.hero-date{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:5px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6)}
+.hero-right{display:flex;gap:14px;position:relative;z-index:1;flex-wrap:wrap}
+.hero-stat{background:rgba(255,255,255,.12);border-radius:12px;padding:14px 20px;text-align:center;backdrop-filter:blur(4px)}
+.hero-stat-num{font-family:'Syne',sans-serif;font-size:30px;font-weight:800;color:#fff;line-height:1}
+.hero-stat-label{font-size:10px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1.5px;margin-top:3px}
 
-/* ── STATS ── */
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-bottom:28px}
-.stat-card{background:var(--surface);border-radius:var(--radius);padding:20px 22px;box-shadow:var(--shadow);display:flex;align-items:center;gap:14px}
-.stat-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.stat-icon.teal{background:rgba(0,71,93,.1)}
-.stat-icon.green{background:rgba(46,184,123,.12)}
-.stat-icon.orange{background:rgba(240,165,0,.12)}
-.stat-icon.blue{background:rgba(0,184,217,.12)}
-.stat-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
-.stat-value{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--text);line-height:1}
+/* SECTION */
+.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+.section-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--teal);flex-shrink:0}
+.dot.muted{background:var(--muted)}
+.section-badge{background:var(--teal);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
+.section-divider{height:1.5px;background:var(--border);margin:28px 0;border-radius:2px}
 
-/* ── TOOLBAR ── */
-.toolbar{background:var(--surface);border-radius:var(--radius);padding:16px 20px;margin-bottom:20px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+/* TOOLBAR */
+.toolbar{background:var(--surface);border-radius:var(--radius);padding:14px 18px;margin-bottom:18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .search-wrap{position:relative;flex:1;min-width:200px}
 .search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--muted)}
 #search-input{width:100%;padding:9px 12px 9px 36px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s;background:var(--surface2)}
 #search-input:focus{border-color:var(--teal)}
 .filter-group{display:flex;gap:8px;flex-wrap:wrap}
-select.filter-select{padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--surface2);color:var(--text);cursor:pointer;outline:none;transition:border-color .2s}
+select.filter-select{padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;background:var(--surface2);color:var(--text);cursor:pointer;outline:none}
 select.filter-select:focus{border-color:var(--teal)}
 .view-toggle{display:flex;background:var(--surface2);border-radius:8px;padding:3px;border:1.5px solid var(--border)}
 .view-btn{padding:6px 12px;border-radius:6px;border:none;background:transparent;cursor:pointer;font-size:13px;font-weight:500;color:var(--muted);display:flex;align-items:center;gap:5px;transition:all .2s;font-family:'DM Sans',sans-serif}
 .view-btn.active{background:var(--teal);color:#fff}
 .record-count{font-size:12px;color:var(--muted);white-space:nowrap}
 
-/* ── CALENDAR VIEW ── */
+/* CALENDAR */
 .calendar-wrap{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:24px}
 .cal-header{background:var(--teal);padding:18px 24px;display:flex;align-items:center;gap:12px}
 .cal-header h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;flex:1;text-align:center;text-transform:capitalize}
-.cal-nav{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff;width:34px;height:34px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .2s;flex-shrink:0}
+.cal-nav{background:transparent;border:1.5px solid rgba(255,255,255,.3);color:#fff;width:34px;height:34px;border-radius:8px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .cal-nav:hover{background:rgba(255,255,255,.15)}
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
 .cal-day-header{padding:10px 4px;text-align:center;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;border-bottom:1.5px solid var(--border)}
-.cal-cell{min-height:80px;padding:6px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;position:relative}
+.cal-cell{min-height:80px;padding:6px;border-right:1px solid var(--border);border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s}
 .cal-cell:nth-child(7n){border-right:none}
 .cal-cell:hover{background:var(--surface2)}
 .cal-cell.empty{background:var(--surface2);cursor:default}
-.cal-cell.today{background:rgba(0,71,93,.04)}
+.cal-cell.today{background:rgba(0,71,93,.05)}
 .cal-cell.today .cal-date{background:var(--teal);color:#fff;border-radius:50%}
-.cal-cell.selected{background:rgba(0,71,93,.06);outline:2px solid var(--teal);outline-offset:-2px}
 .cal-date{width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;margin-bottom:4px;border-radius:50%}
 .cal-dot{font-size:10px;padding:2px 5px;border-radius:4px;background:var(--teal);color:#fff;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.4;display:block;max-width:100%}
-.cal-dot.more{background:var(--accent);color:#fff}
+.cal-dot.more{background:var(--accent)}
 
-/* ── LIST VIEW ── */
+/* CARDS */
 .list-wrap{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
 .appointment-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;display:flex;transition:transform .2s,box-shadow .2s;cursor:pointer}
 .appointment-card:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,71,93,.15)}
+.appointment-card.today-card{box-shadow:0 4px 24px rgba(0,71,93,.18),0 0 0 2px rgba(0,71,93,.12)}
 .card-accent{width:5px;flex-shrink:0}
-.card-accent.green{background:var(--green)}
-.card-accent.orange{background:var(--orange)}
-.card-accent.blue{background:var(--accent2)}
-.card-accent.teal{background:var(--teal)}
+.card-accent.green{background:var(--green)}.card-accent.orange{background:var(--orange)}.card-accent.blue{background:var(--accent2)}.card-accent.teal{background:var(--teal)}
 .card-body{flex:1;padding:18px 20px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:12px;align-items:center}
 .card-field label{font-size:9px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:3px}
 .card-field .val{font-size:14px;font-weight:600;color:var(--text);line-height:1.3}
 .card-field .val.big{font-size:15px;color:var(--teal);font-weight:700}
 .card-field .sub{font-size:11px;color:var(--muted);margin-top:1px}
 .card-badge{padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
-.badge-green{background:rgba(46,184,123,.12);color:#1a8a5a}
-.badge-orange{background:rgba(240,165,0,.12);color:#a06600}
-.badge-teal{background:rgba(0,71,93,.1);color:var(--teal)}
-.badge-blue{background:rgba(0,184,217,.12);color:#0077a0}
+.badge-green{background:rgba(46,184,123,.12);color:#1a8a5a}.badge-orange{background:rgba(240,165,0,.12);color:#a06600}.badge-teal{background:rgba(0,71,93,.1);color:var(--teal)}.badge-blue{background:rgba(0,184,217,.12);color:#0077a0}
 
-/* ── MODAL ── */
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .25s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--surface);border-radius:18px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.3);transform:translateY(20px);transition:transform .25s}
@@ -131,7 +109,7 @@ select.filter-select:focus{border-color:var(--teal)}
 .modal-header{background:var(--teal);padding:22px 28px;display:flex;align-items:flex-start;justify-content:space-between;position:sticky;top:0}
 .modal-title{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:#fff;margin-bottom:3px}
 .modal-sub{font-size:12px;color:rgba(255,255,255,.6)}
-.modal-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s;flex-shrink:0}
+.modal-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:background .2s}
 .modal-close:hover{background:rgba(255,255,255,.3)}
 .modal-body{padding:24px 28px}
 .modal-section{margin-bottom:20px}
@@ -142,46 +120,30 @@ select.filter-select:focus{border-color:var(--teal)}
 .modal-field .val.highlight{font-weight:700;color:var(--teal);font-size:16px}
 .modal-note{background:var(--surface2);border-radius:10px;padding:14px;font-size:13px;color:var(--text);line-height:1.6;border-left:3px solid var(--teal)}
 
-/* ── EMPTY STATE ── */
-.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
-.empty-state .icon{font-size:48px;margin-bottom:16px}
-.empty-state h3{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--text);margin-bottom:8px}
-.empty-state p{font-size:14px}
+/* EMPTY */
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted)}
+.empty-state .icon{font-size:44px;margin-bottom:14px}
+.empty-state h3{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px}
+.empty-state p{font-size:13px}
 
-/* ── LOADING ── */
-.loading-overlay{position:fixed;inset:0;background:rgba(238,244,246,.9);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+/* LOADING */
+.loading-overlay{position:fixed;inset:0;background:rgba(238,244,246,.92);z-index:300;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px}
 .spinner{width:44px;height:44px;border:4px solid rgba(0,71,93,.15);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite}
 .loading-text{font-family:'Syne',sans-serif;font-size:14px;color:var(--teal);font-weight:600;letter-spacing:1px}
 
-/* ── TOAST ── */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--teal);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:400;transform:translateY(60px);opacity:0;transition:all .3s;display:flex;align-items:center;gap:8px}
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--teal);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;box-shadow:0 8px 24px rgba(0,0,0,.2);z-index:400;transform:translateY(60px);opacity:0;transition:all .3s}
 .toast.show{transform:translateY(0);opacity:1}
-.toast.error{background:var(--red)}
-.toast.success{background:var(--green)}
+.toast.error{background:var(--red)}.toast.success{background:var(--green)}
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .card-body{grid-template-columns:1fr 1fr;gap:10px}
-  .card-field:last-child{grid-column:span 2}
-}
+@media(max-width:900px){.card-body{grid-template-columns:1fr 1fr;gap:10px}.card-field:last-child{grid-column:span 2}}
 @media(max-width:640px){
-  .container{padding:16px}
-  .card-body{grid-template-columns:1fr;gap:8px}
-  .card-field:last-child{grid-column:1}
-  .modal-grid{grid-template-columns:1fr}
-  .config-banner{flex-direction:column;align-items:flex-start}
-  .header-inner{padding:12px 16px}
-  .logo-title{font-size:18px;letter-spacing:2px}
-  .stats-grid{grid-template-columns:1fr 1fr}
-  .cal-grid{overflow-x:auto}
-  .toolbar{flex-direction:column;align-items:stretch}
-  .filter-group{flex-direction:column}
-  .view-toggle{width:fit-content}
+  .container{padding:16px}.card-body{grid-template-columns:1fr;gap:8px}.card-field:last-child{grid-column:1}
+  .modal-grid{grid-template-columns:1fr}.header-inner{padding:12px 16px}.logo-title{font-size:18px;letter-spacing:2px}
+  .toolbar{flex-direction:column;align-items:stretch}.filter-group{flex-direction:column}.view-toggle{width:fit-content}
+  .today-hero{flex-direction:column;align-items:flex-start}.hero-right{width:100%}.hero-stat{flex:1}.hero-date{font-size:20px}
 }
-@media(max-width:400px){
-  .stats-grid{grid-template-columns:1fr}
-  .cal-dot{display:none}
-}
+@media(max-width:400px){.cal-dot{display:none}}
 </style>
 </head>
 <body>
@@ -192,6 +154,7 @@ select.filter-select:focus{border-color:var(--teal)}
       <span class="logo-title">Italbatterie</span>
       <span class="logo-sub">La tua strada, la nostra energia</span>
     </div>
+    <div class="header-center"><span class="header-date-text" id="header-date"></span></div>
     <div class="header-actions">
       <button class="btn btn-outline" id="refresh-btn" onclick="loadData()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
@@ -205,60 +168,47 @@ select.filter-select:focus{border-color:var(--teal)}
   </div>
 </header>
 
-<div class="container">
+<div class="container" id="main-container" style="display:none">
 
-  <!-- CONFIG -->
-  <div class="config-banner" id="config-banner">
-    <div class="icon">🔗</div>
-    <div style="flex:1">
-      <h2>Configura il tuo Google Sheet</h2>
-      <p>Incolla il link pubblico del foglio (File → Condividi → Pubblica sul web → CSV)</p>
-      <div class="url-input-row">
-        <input id="sheet-url" type="url" placeholder="https://docs.google.com/spreadsheets/d/.../export?format=csv&gid=0"/>
-        <div class="config-actions">
-          <button class="btn btn-accent" onclick="saveUrl()">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Connetti
-          </button>
-          <button class="btn btn-outline" onclick="loadDemo()">Demo</button>
-        </div>
-      </div>
+  <!-- HERO TODAY -->
+  <div class="today-hero">
+    <div class="hero-left">
+      <div class="hero-label">Oggi</div>
+      <div class="hero-date" id="hero-date-full"></div>
+      <div class="hero-sub" id="hero-sub"></div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stat"><div class="hero-stat-num" id="h-today">0</div><div class="hero-stat-label">Appunt. oggi</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="h-month">0</div><div class="hero-stat-label">Questo mese</div></div>
+      <div class="hero-stat"><div class="hero-stat-num" id="h-total">0</div><div class="hero-stat-label">Totale</div></div>
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-grid" id="stats-section" style="display:none">
-    <div class="stat-card">
-      <div class="stat-icon teal">📅</div>
-      <div><div class="stat-label">Totale</div><div class="stat-value" id="stat-total">0</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon green">✅</div>
-      <div><div class="stat-label">Questo mese</div><div class="stat-value" id="stat-month">0</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon orange">⏰</div>
-      <div><div class="stat-label">Questa settimana</div><div class="stat-value" id="stat-week">0</div></div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon blue">🚗</div>
-      <div><div class="stat-label">Veicoli totali</div><div class="stat-value" id="stat-vehicles">0</div></div>
+  <!-- TODAY APPOINTMENTS -->
+  <div class="section-header">
+    <div class="section-title">
+      <span class="dot"></span>
+      Appuntamenti di oggi
+      <span class="section-badge" id="today-badge">0</span>
     </div>
   </div>
+  <div id="today-list" class="list-wrap"></div>
 
-  <!-- TOOLBAR -->
-  <div class="toolbar" id="toolbar" style="display:none">
+  <div class="section-divider"></div>
+
+  <!-- ALL APPOINTMENTS -->
+  <div class="section-header">
+    <div class="section-title"><span class="dot muted"></span> Tutti gli appuntamenti</div>
+  </div>
+
+  <div class="toolbar">
     <div class="search-wrap">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input id="search-input" type="text" placeholder="Cerca azienda, servizio, nome…" oninput="applyFilters()"/>
     </div>
     <div class="filter-group">
-      <select class="filter-select" id="filter-month" onchange="applyFilters()">
-        <option value="">Tutti i mesi</option>
-      </select>
-      <select class="filter-select" id="filter-service" onchange="applyFilters()">
-        <option value="">Tutti i servizi</option>
-      </select>
+      <select class="filter-select" id="filter-month" onchange="applyFilters()"><option value="">Tutti i mesi</option></select>
+      <select class="filter-select" id="filter-service" onchange="applyFilters()"><option value="">Tutti i servizi</option></select>
     </div>
     <div class="view-toggle">
       <button class="view-btn active" id="vb-list" onclick="setView('list')">
@@ -273,7 +223,6 @@ select.filter-select:focus{border-color:var(--teal)}
     <span class="record-count" id="record-count"></span>
   </div>
 
-  <!-- CALENDAR -->
   <div id="calendar-view" style="display:none">
     <div class="calendar-wrap">
       <div class="cal-header">
@@ -290,429 +239,258 @@ select.filter-select:focus{border-color:var(--teal)}
     </div>
   </div>
 
-  <!-- LIST -->
-  <div id="list-view" style="display:none">
+  <div id="list-view">
     <div class="list-wrap" id="appointments-list"></div>
   </div>
-
 </div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
+  <div class="modal">
     <div class="modal-header">
-      <div>
-        <div class="modal-title" id="modal-title">Appuntamento</div>
-        <div class="modal-sub" id="modal-sub"></div>
-      </div>
+      <div><div class="modal-title" id="modal-title"></div><div class="modal-sub" id="modal-sub"></div></div>
       <button class="modal-close" onclick="closeModalDirect()">✕</button>
     </div>
     <div class="modal-body" id="modal-body"></div>
   </div>
 </div>
 
-<!-- LOADING -->
-<div class="loading-overlay" id="loading" style="display:none">
+<div class="loading-overlay" id="loading">
   <div class="spinner"></div>
   <div class="loading-text">Caricamento appuntamenti…</div>
 </div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
 <script>
-const STORAGE_KEY = 'ital_sheet_url';
-const MONTHS_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
-const DAYS_IT = ['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
-const BADGE_COLORS = ['badge-teal','badge-green','badge-orange','badge-blue'];
-const ACCENT_COLORS = ['teal','green','orange','blue'];
+const SHEET_URL='https://docs.google.com/spreadsheets/d/e/2PACX-1vRoKsL-JYKMcv6l_cvuH_VKYyPhcus_JdxaJS0PvRy1j8t_7z6g4YZBKzte40gRbXfQ37vvLBy2IPcu/pub?gid=60641573&single=true&output=csv';
+const MONTHS_IT=['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre'];
+const DAYS_FULL=['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
+const DAYS_SHORT=['Lun','Mar','Mer','Gio','Ven','Sab','Dom'];
+const ACCENTS=['teal','green','orange','blue'];
+const BADGES=['badge-teal','badge-green','badge-orange','badge-blue'];
+let allData=[],filtered=[],currentView='list',calYear=new Date().getFullYear(),calMonth=new Date().getMonth();
 
-let allData = [];
-let filtered = [];
-let currentView = 'list';
-let calYear = new Date().getFullYear();
-let calMonth = new Date().getMonth();
-
-// ── INIT ──
-window.onload = () => {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  if(saved){ document.getElementById('sheet-url').value = saved; loadData(); }
+window.onload=()=>{
+  const now=new Date();
+  const dayName=DAYS_FULL[now.getDay()].charAt(0).toUpperCase()+DAYS_FULL[now.getDay()].slice(1);
+  const fullDate=`${dayName} ${now.getDate()} ${MONTHS_IT[now.getMonth()]} ${now.getFullYear()}`;
+  document.getElementById('header-date').textContent=fullDate;
+  document.getElementById('hero-date-full').textContent=fullDate;
+  loadData();
 };
 
-// ── URL MANAGEMENT ──
-function saveUrl(){
-  const url = document.getElementById('sheet-url').value.trim();
-  if(!url){ showToast('Inserisci un URL valido','error'); return; }
-  localStorage.setItem(STORAGE_KEY, url);
-  loadData();
-}
-
-// ── DEMO DATA ──
-function loadDemo(){
-  const demo = [
-    {timestamp:'2025-06-01 09:00',azienda:'Trasporti Bianchi Srl',indirizzo:'Via Roma 12, Milano',nome:'Marco',cognome:'Bianchi',telefono:'02 1234567',email:'m.bianchi@example.com',data:'01/06/2025',ora:'09:00',servizio:'Controllo batterie',num_veicoli:'3',tipo_veicoli:'Furgoni',note:'Urgente, flotta aziendale'},
-    {timestamp:'2025-06-03 10:30',azienda:'Logistica Verdi SpA',indirizzo:'Corso Europa 45, Torino',nome:'Anna',cognome:'Verdi',telefono:'011 9876543',email:'a.verdi@example.com',data:'03/06/2025',ora:'10:30',servizio:'Sostituzione batterie',num_veicoli:'5',tipo_veicoli:'Camion',note:''},
-    {timestamp:'2025-06-05 14:00',azienda:'Autonoleggio Rossi',indirizzo:'Viale Tevere 7, Roma',nome:'Luca',cognome:'Rossi',telefono:'06 5554433',email:'l.rossi@example.com',data:'05/06/2025',ora:'14:00',servizio:'Controllo batterie',num_veicoli:'10',tipo_veicoli:'Autovetture',note:'Cliente preferenziale'},
-    {timestamp:'2025-06-10 08:30',azienda:'Flotta Express Srl',indirizzo:'Via Po 22, Bologna',nome:'Sara',cognome:'Neri',telefono:'051 2233445',email:'s.neri@example.com',data:'10/06/2025',ora:'08:30',servizio:'Manutenzione preventiva',num_veicoli:'8',tipo_veicoli:'Furgoni',note:''},
-    {timestamp:'2025-06-10 15:00',azienda:'Coop Trasporti Nord',indirizzo:'Via Manzoni 3, Bergamo',nome:'Paolo',cognome:'Ferrari',telefono:'035 6677889',email:'p.ferrari@example.com',data:'10/06/2025',ora:'15:00',servizio:'Sostituzione batterie',num_veicoli:'2',tipo_veicoli:'Autobus',note:'Preventivo richiesto'},
-    {timestamp:'2025-06-15 09:00',azienda:'Sud Delivery Sas',indirizzo:'Via Napoli 88, Napoli',nome:'Giulia',cognome:'Russo',telefono:'081 1122334',email:'g.russo@example.com',data:'15/06/2025',ora:'09:00',servizio:'Controllo batterie',num_veicoli:'6',tipo_veicoli:'Moto',note:''},
-    {timestamp:'2025-06-18 11:00',azienda:'Trasporti Bianchi Srl',indirizzo:'Via Roma 12, Milano',nome:'Marco',cognome:'Bianchi',telefono:'02 1234567',email:'m.bianchi@example.com',data:'18/06/2025',ora:'11:00',servizio:'Sostituzione batterie',num_veicoli:'4',tipo_veicoli:'Furgoni',note:'Secondo intervento'},
-    {timestamp:'2025-06-20 16:00',azienda:'Impresa Monti & C.',indirizzo:'Viale dei Pini 14, Firenze',nome:'Roberto',cognome:'Monti',telefono:'055 9988776',email:'r.monti@example.com',data:'20/06/2025',ora:'16:00',servizio:'Manutenzione preventiva',num_veicoli:'1',tipo_veicoli:'Autovetture',note:'Prima visita'},
-  ];
-  allData = demo;
-  processData();
-  showToast('Dati demo caricati ✓','success');
-}
-
-// ── LOAD DATA ──
 async function loadData(){
-  const url = localStorage.getItem(STORAGE_KEY) || document.getElementById('sheet-url').value.trim();
-  if(!url){ showToast('Nessun URL configurato','error'); return; }
-
   setLoading(true);
   try{
-    // Add CORS proxy if needed
-    let fetchUrl = url;
-    if(!url.includes('cors') && !url.includes('localhost')){
-      fetchUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
-    }
-    const resp = await fetch(fetchUrl);
-    if(!resp.ok) throw new Error('HTTP ' + resp.status);
-    const text = await resp.text();
-    allData = parseCSV(text);
+    const url='https://corsproxy.io/?'+encodeURIComponent(SHEET_URL);
+    const r=await fetch(url);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    allData=parseCSV(await r.text());
     processData();
     showToast('Dati aggiornati ✓','success');
-  }catch(err){
-    showToast('Errore nel caricamento: ' + err.message,'error');
-    console.error(err);
-  }finally{
-    setLoading(false);
-  }
+  }catch(e){showToast('Errore: '+e.message,'error');console.error(e);}
+  finally{setLoading(false);}
 }
 
-// ── CSV PARSER ──
 function parseCSV(text){
-  const lines = text.trim().split('\n');
-  if(lines.length < 2) return [];
-  const headers = parseCSVLine(lines[0]).map(h => h.trim().toLowerCase()
-    .replace('n° veicoli','num_veicoli')
-    .replace('tipo veicoli','tipo_veicoli')
-    .replace('azienda','azienda')
-    .replace('indirizzo','indirizzo')
-    .replace('nome','nome').replace('cognome','cognome')
-    .replace('telefono','telefono').replace('email','email')
-    .replace('data','data').replace('ora','ora')
-    .replace('servizio','servizio').replace('note','note')
-    .replace('timestamp','timestamp')
-    .replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,'')
-  );
-  const rows = [];
+  const lines=text.trim().split('\n');
+  if(lines.length<2)return[];
+  const headers=parseCSVLine(lines[0]).map(h=>h.trim().toLowerCase()
+    .replace('n° veicoli','num_veicoli').replace('n veicoli','num_veicoli')
+    .replace('tipo veicoli','tipo_veicoli').replace(/\s+/g,'_').replace(/[^a-z0-9_]/g,''));
+  const rows=[];
   for(let i=1;i<lines.length;i++){
-    const vals = parseCSVLine(lines[i]);
-    if(vals.every(v=>!v.trim())) continue;
-    const obj = {};
-    headers.forEach((h,idx) => obj[h] = (vals[idx]||'').trim());
+    const vals=parseCSVLine(lines[i]);
+    if(vals.every(v=>!v.trim()))continue;
+    const obj={};
+    headers.forEach((h,idx)=>obj[h]=(vals[idx]||'').trim());
     rows.push(obj);
   }
   return rows;
 }
-
 function parseCSVLine(line){
-  const result = []; let cur = ''; let inQ = false;
-  for(let i=0;i<line.length;i++){
-    const c = line[i];
-    if(c==='"'){ inQ=!inQ; continue; }
-    if(c===','&&!inQ){ result.push(cur); cur=''; continue; }
+  const res=[]; let cur='',inQ=false;
+  for(const c of line){
+    if(c==='"'){inQ=!inQ;continue;}
+    if(c===','&&!inQ){res.push(cur);cur='';continue;}
     cur+=c;
   }
-  result.push(cur);
-  return result;
+  res.push(cur); return res;
 }
 
-// ── PROCESS ──
 function processData(){
-  document.getElementById('stats-section').style.display='';
-  document.getElementById('toolbar').style.display='';
-  document.getElementById('config-banner').style.display='none';
-
+  document.getElementById('main-container').style.display='';
   populateFilters();
-  updateStats();
+  renderToday();
   applyFilters();
 }
 
-function populateFilters(){
-  const months = new Set();
-  const services = new Set();
-  allData.forEach(r => {
-    const d = parseDate(r.data||r.Data||'');
-    if(d) months.add(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'));
-    if(r.servizio) services.add(r.servizio);
-  });
-  const mSel = document.getElementById('filter-month');
-  mSel.innerHTML = '<option value="">Tutti i mesi</option>';
-  [...months].sort().reverse().forEach(m => {
-    const [y,mo] = m.split('-');
-    mSel.innerHTML += `<option value="${m}">${MONTHS_IT[parseInt(mo)-1]} ${y}</option>`;
-  });
-  const sSel = document.getElementById('filter-service');
-  sSel.innerHTML = '<option value="">Tutti i servizi</option>';
-  [...services].sort().forEach(s => sSel.innerHTML += `<option value="${s}">${s}</option>`);
+function renderToday(){
+  const now=new Date();
+  const todays=allData.filter(r=>{
+    const d=parseDate(r.data||'');
+    return d&&d.getDate()===now.getDate()&&d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();
+  }).sort((a,b)=>timeToMin(a.ora||'')-timeToMin(b.ora||''));
+  const monthCount=allData.filter(r=>{const d=parseDate(r.data||'');return d&&d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear();}).length;
+  document.getElementById('h-today').textContent=todays.length;
+  document.getElementById('h-month').textContent=monthCount;
+  document.getElementById('h-total').textContent=allData.length;
+  document.getElementById('today-badge').textContent=todays.length;
+  document.getElementById('hero-sub').textContent=todays.length===0?'Nessun appuntamento programmato per oggi':todays.length===1?'1 appuntamento programmato':todays.length+' appuntamenti programmati';
+  const el=document.getElementById('today-list');
+  if(!todays.length){
+    el.innerHTML=`<div class="empty-state" style="padding:32px 20px"><div class="icon">☀️</div><h3>Nessun appuntamento oggi</h3><p>Non ci sono appuntamenti programmati per oggi.</p></div>`;
+    return;
+  }
+  el.innerHTML=todays.map((r,i)=>cardHTML(r,i,true)).join('');
 }
 
-function updateStats(){
-  const now = new Date();
-  const thisMonth = now.getMonth(); const thisYear = now.getFullYear();
-  const weekAgo = new Date(now); weekAgo.setDate(now.getDate()-7);
-  let month=0, week=0, vehicles=0;
-  allData.forEach(r => {
-    const d = parseDate(r.data||r.Data||'');
-    if(d){
-      if(d.getMonth()===thisMonth && d.getFullYear()===thisYear) month++;
-      if(d>=weekAgo && d<=now) week++;
-    }
-    const v = parseInt(r.num_veicoli||r['n_veicoli']||0);
-    if(!isNaN(v)) vehicles+=v;
+function timeToMin(t){if(!t)return 9999;const p=t.split(':');return +p[0]*60+(+p[1]||0);}
+
+function populateFilters(){
+  const months=new Set(),services=new Set();
+  allData.forEach(r=>{
+    const d=parseDate(r.data||'');
+    if(d)months.add(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0'));
+    if(r.servizio)services.add(r.servizio);
   });
-  document.getElementById('stat-total').textContent = allData.length;
-  document.getElementById('stat-month').textContent = month;
-  document.getElementById('stat-week').textContent = week;
-  document.getElementById('stat-vehicles').textContent = vehicles;
+  const ms=document.getElementById('filter-month');
+  ms.innerHTML='<option value="">Tutti i mesi</option>';
+  [...months].sort().reverse().forEach(m=>{const[y,mo]=m.split('-');ms.innerHTML+=`<option value="${m}">${MONTHS_IT[+mo-1]} ${y}</option>`;});
+  const ss=document.getElementById('filter-service');
+  ss.innerHTML='<option value="">Tutti i servizi</option>';
+  [...services].sort().forEach(s=>ss.innerHTML+=`<option value="${s}">${s}</option>`);
 }
 
 function applyFilters(){
-  const q = document.getElementById('search-input').value.toLowerCase();
-  const mo = document.getElementById('filter-month').value;
-  const sv = document.getElementById('filter-service').value;
-  filtered = allData.filter(r => {
-    const txt = Object.values(r).join(' ').toLowerCase();
-    if(q && !txt.includes(q)) return false;
-    if(mo){
-      const d = parseDate(r.data||r.Data||'');
-      if(!d) return false;
-      const key = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0');
-      if(key!==mo) return false;
-    }
-    if(sv && (r.servizio||'')!==sv) return false;
+  const q=document.getElementById('search-input').value.toLowerCase();
+  const mo=document.getElementById('filter-month').value;
+  const sv=document.getElementById('filter-service').value;
+  filtered=allData.filter(r=>{
+    if(q&&!Object.values(r).join(' ').toLowerCase().includes(q))return false;
+    if(mo){const d=parseDate(r.data||'');if(!d)return false;if(d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')!==mo)return false;}
+    if(sv&&(r.servizio||'')!==sv)return false;
     return true;
-  });
-  // Sort by date desc
-  filtered.sort((a,b)=>{
-    const da = parseDate(a.data||a.Data||'');
-    const db = parseDate(b.data||b.Data||'');
-    if(!da&&!db) return 0; if(!da) return 1; if(!db) return -1;
-    return db-da;
-  });
-  document.getElementById('record-count').textContent = filtered.length + ' appuntament' + (filtered.length===1?'o':'i');
-  if(currentView==='list') renderList();
-  else renderCalendar();
+  }).sort((a,b)=>{const da=parseDate(a.data||''),db=parseDate(b.data||'');if(!da&&!db)return 0;if(!da)return 1;if(!db)return -1;return db-da;});
+  document.getElementById('record-count').textContent=filtered.length+' appuntament'+(filtered.length===1?'o':'i');
+  if(currentView==='list')renderList(); else renderCalendar();
 }
 
-// ── DATE PARSER ──
 function parseDate(s){
-  if(!s) return null;
-  s = s.trim();
-  let m;
-  if(m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/)) return new Date(+m[3],+m[2]-1,+m[1]);
-  if(m = s.match(/^(\d{4})-(\d{2})-(\d{2})/)) return new Date(+m[1],+m[2]-1,+m[3]);
-  if(m = s.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/)) return new Date(+m[3],+m[2]-1,+m[1]);
+  if(!s)return null; s=s.trim(); let m;
+  if(m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/))return new Date(+m[3],+m[2]-1,+m[1]);
+  if(m=s.match(/^(\d{4})-(\d{2})-(\d{2})/))return new Date(+m[1],+m[2]-1,+m[3]);
+  if(m=s.match(/^(\d{1,2})-(\d{1,2})-(\d{4})$/))return new Date(+m[3],+m[2]-1,+m[1]);
   return null;
 }
 
-// ── VIEW TOGGLE ──
 function setView(v){
-  currentView = v;
-  document.getElementById('vb-list').classList.toggle('active', v==='list');
-  document.getElementById('vb-cal').classList.toggle('active', v==='calendar');
-  document.getElementById('list-view').style.display = v==='list' ? '' : 'none';
-  document.getElementById('calendar-view').style.display = v==='calendar' ? '' : 'none';
-  if(v==='calendar') renderCalendar();
-  else renderList();
+  currentView=v;
+  document.getElementById('vb-list').classList.toggle('active',v==='list');
+  document.getElementById('vb-cal').classList.toggle('active',v==='calendar');
+  document.getElementById('list-view').style.display=v==='list'?'':'none';
+  document.getElementById('calendar-view').style.display=v==='calendar'?'':'none';
+  if(v==='calendar')renderCalendar(); else renderList();
 }
 
-// ── LIST RENDER ──
 function renderList(){
-  const el = document.getElementById('appointments-list');
-  document.getElementById('list-view').style.display='';
-  if(!filtered.length){ el.innerHTML = emptyState('Nessun appuntamento trovato','Prova a modificare i filtri di ricerca'); return; }
-  el.innerHTML = filtered.map((r,i) => cardHTML(r,i)).join('');
+  const el=document.getElementById('appointments-list');
+  if(!filtered.length){el.innerHTML=emptyState('Nessun appuntamento trovato','Prova a modificare i filtri');return;}
+  el.innerHTML=filtered.map((r,i)=>cardHTML(r,i,false)).join('');
 }
 
-function cardHTML(r, i){
-  const color = ACCENT_COLORS[i%4];
-  const badge = BADGE_COLORS[i%4];
-  const azienda = r.azienda || r.Azienda || '—';
-  const data = r.data || r.Data || '—';
-  const ora = r.ora || r.Ora || '—';
-  const servizio = r.servizio || r.Servizio || '—';
-  const veicoli = r.num_veicoli || '—';
-  const tipo = r.tipo_veicoli || '—';
-  const nome = [r.nome,r.cognome].filter(Boolean).join(' ') || '—';
-  return `<div class="appointment-card" onclick='openModal(${JSON.stringify(r).replace(/'/g,"&#39;")})'>
-    <div class="card-accent ${color}"></div>
+function cardHTML(r,i,today){
+  const col=ACCENTS[i%4],badge=BADGES[i%4];
+  const az=r.azienda||'—',dt=r.data||'—',ora=r.ora||'—',sv=r.servizio||'—',vei=r.num_veicoli||'—',tip=r.tipo_veicoli||'—';
+  const nome=[r.nome,r.cognome].filter(Boolean).join(' ')||'—';
+  return`<div class="appointment-card${today?' today-card':''}" onclick='openModal(${JSON.stringify(r).replace(/'/g,"&#39;")})'>
+    <div class="card-accent ${col}"></div>
     <div class="card-body">
-      <div class="card-field">
-        <label>Azienda</label>
-        <div class="val big">${esc(azienda)}</div>
-        <div class="sub">${esc(nome)}</div>
-      </div>
-      <div class="card-field">
-        <label>Data &amp; Ora</label>
-        <div class="val">${esc(data)}</div>
-        <div class="sub">${esc(ora)}</div>
-      </div>
-      <div class="card-field">
-        <label>Servizio</label>
-        <div class="val">${esc(servizio)}</div>
-        <div class="sub">${esc(veicoli)} ${esc(tipo)}</div>
-      </div>
-      <div class="card-field">
-        <span class="card-badge ${badge}">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          ${esc(ora)}
-        </span>
-      </div>
-    </div>
-  </div>`;
+      <div class="card-field"><label>Azienda</label><div class="val big">${esc(az)}</div><div class="sub">${esc(nome)}</div></div>
+      <div class="card-field"><label>Data &amp; Ora</label><div class="val">${esc(dt)}</div><div class="sub">${esc(ora)}</div></div>
+      <div class="card-field"><label>Servizio</label><div class="val">${esc(sv)}</div><div class="sub">${esc(vei)} ${esc(tip)}</div></div>
+      <div class="card-field"><span class="card-badge ${badge}"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>${esc(ora)}</span></div>
+    </div></div>`;
 }
 
-// ── CALENDAR RENDER ──
 function renderCalendar(){
-  document.getElementById('calendar-view').style.display='';
-  const title = MONTHS_IT[calMonth] + ' ' + calYear;
-  document.getElementById('cal-title').textContent = title;
-
-  // Headers
-  const hEl = document.getElementById('cal-days-header');
-  hEl.innerHTML = DAYS_IT.map(d=>`<div class="cal-day-header">${d}</div>`).join('');
-
-  // Build map: dateStr -> appointments
-  const map = {};
-  filtered.forEach(r => {
-    const d = parseDate(r.data||r.Data||'');
-    if(!d) return;
-    const k = d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();
-    if(!map[k]) map[k]=[];
-    map[k].push(r);
-  });
-
-  const firstDay = new Date(calYear, calMonth, 1);
-  let startDow = firstDay.getDay(); // 0=Sun
-  startDow = startDow === 0 ? 6 : startDow-1; // Mon=0
-  const daysInMonth = new Date(calYear, calMonth+1, 0).getDate();
-  const today = new Date();
-
-  let cells = '';
-  for(let i=0;i<startDow;i++) cells += '<div class="cal-cell empty"></div>';
-  for(let d=1;d<=daysInMonth;d++){
-    const k = calYear+'-'+calMonth+'-'+d;
-    const appts = map[k]||[];
-    const isToday = today.getDate()===d && today.getMonth()===calMonth && today.getFullYear()===calYear;
-    const dots = appts.slice(0,2).map(a=>`<span class="cal-dot">${esc(a.ora||a.Ora||'')} ${esc(a.azienda||a.Azienda||'')}</span>`).join('');
-    const more = appts.length>2 ? `<span class="cal-dot more">+${appts.length-2} altri</span>` : '';
-    cells += `<div class="cal-cell${isToday?' today':''}" onclick="selectCalDay(${d})">
-      <div class="cal-date">${d}</div>
-      ${dots}${more}
-    </div>`;
+  document.getElementById('cal-title').textContent=MONTHS_IT[calMonth]+' '+calYear;
+  document.getElementById('cal-days-header').innerHTML=DAYS_SHORT.map(d=>`<div class="cal-day-header">${d}</div>`).join('');
+  const map={};
+  filtered.forEach(r=>{const d=parseDate(r.data||'');if(!d)return;const k=d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();if(!map[k])map[k]=[];map[k].push(r);});
+  let sd=new Date(calYear,calMonth,1).getDay();sd=sd===0?6:sd-1;
+  const dim=new Date(calYear,calMonth+1,0).getDate(),now=new Date();
+  let cells='';
+  for(let i=0;i<sd;i++)cells+='<div class="cal-cell empty"></div>';
+  for(let d=1;d<=dim;d++){
+    const k=calYear+'-'+calMonth+'-'+d,appts=map[k]||[];
+    const isT=now.getDate()===d&&now.getMonth()===calMonth&&now.getFullYear()===calYear;
+    const dots=appts.slice(0,2).map(a=>`<span class="cal-dot">${esc(a.ora||'')} ${esc(a.azienda||'')}</span>`).join('');
+    const more=appts.length>2?`<span class="cal-dot more">+${appts.length-2} altri</span>`:'';
+    cells+=`<div class="cal-cell${isT?' today':''}" onclick="selectCalDay(${d})"><div class="cal-date">${d}</div>${dots}${more}</div>`;
   }
-  document.getElementById('cal-body').innerHTML = cells;
+  document.getElementById('cal-body').innerHTML=cells;
 }
 
 function changeMonth(dir){
-  calMonth += dir;
-  if(calMonth>11){calMonth=0;calYear++;}
-  if(calMonth<0){calMonth=11;calYear--;}
-  renderCalendar();
-  document.getElementById('cal-day-detail').style.display='none';
+  calMonth+=dir;if(calMonth>11){calMonth=0;calYear++;}if(calMonth<0){calMonth=11;calYear--;}
+  renderCalendar();document.getElementById('cal-day-detail').style.display='none';
 }
 
 function selectCalDay(d){
-  const dateStr = `${String(d).padStart(2,'0')}/${String(calMonth+1).padStart(2,'0')}/${calYear}`;
-  const map = {};
-  filtered.forEach(r => {
-    const date = parseDate(r.data||r.Data||'');
-    if(!date) return;
-    const k = `${String(date.getDate()).padStart(2,'0')}/${String(date.getMonth()+1).padStart(2,'0')}/${date.getFullYear()}`;
-    if(!map[k]) map[k]=[];
-    map[k].push(r);
-  });
-  const appts = map[dateStr]||[];
-  const detail = document.getElementById('cal-day-detail');
-  if(!appts.length){ detail.style.display='none'; return; }
-  document.getElementById('cal-day-title').textContent = `📅 ${d} ${MONTHS_IT[calMonth]} ${calYear} — ${appts.length} appuntament${appts.length===1?'o':'i'}`;
-  document.getElementById('cal-day-list').innerHTML = appts.map((r,i)=>cardHTML(r,i)).join('');
-  detail.style.display='';
-  detail.scrollIntoView({behavior:'smooth',block:'start'});
+  const ds=`${String(d).padStart(2,'0')}/${String(calMonth+1).padStart(2,'0')}/${calYear}`;
+  const map={};
+  filtered.forEach(r=>{const date=parseDate(r.data||'');if(!date)return;const k=`${String(date.getDate()).padStart(2,'0')}/${String(date.getMonth()+1).padStart(2,'0')}/${date.getFullYear()}`;if(!map[k])map[k]=[];map[k].push(r);});
+  const appts=map[ds]||[];const det=document.getElementById('cal-day-detail');
+  if(!appts.length){det.style.display='none';return;}
+  document.getElementById('cal-day-title').textContent=`📅 ${d} ${MONTHS_IT[calMonth]} ${calYear} — ${appts.length} appuntament${appts.length===1?'o':'i'}`;
+  document.getElementById('cal-day-list').innerHTML=appts.map((r,i)=>cardHTML(r,i,false)).join('');
+  det.style.display='';det.scrollIntoView({behavior:'smooth',block:'start'});
 }
 
-// ── MODAL ──
 function openModal(r){
-  const azienda = r.azienda||r.Azienda||'—';
-  const data = r.data||r.Data||'—';
-  const ora = r.ora||r.Ora||'—';
-  document.getElementById('modal-title').textContent = azienda;
-  document.getElementById('modal-sub').textContent = `${data} alle ${ora}`;
-  document.getElementById('modal-body').innerHTML = `
-    <div class="modal-section">
-      <h4>Dettagli Appuntamento</h4>
+  document.getElementById('modal-title').textContent=r.azienda||'—';
+  document.getElementById('modal-sub').textContent=`${r.data||'—'} alle ${r.ora||'—'}`;
+  document.getElementById('modal-body').innerHTML=`
+    <div class="modal-section"><h4>Dettagli Appuntamento</h4>
       <div class="modal-grid">
-        <div class="modal-field"><label>Data</label><div class="val highlight">${esc(data)}</div></div>
-        <div class="modal-field"><label>Ora</label><div class="val highlight">${esc(ora)}</div></div>
+        <div class="modal-field"><label>Data</label><div class="val highlight">${esc(r.data||'—')}</div></div>
+        <div class="modal-field"><label>Ora</label><div class="val highlight">${esc(r.ora||'—')}</div></div>
         <div class="modal-field"><label>Servizio</label><div class="val">${esc(r.servizio||'—')}</div></div>
         <div class="modal-field"><label>N° Veicoli</label><div class="val">${esc(r.num_veicoli||'—')}</div></div>
         <div class="modal-field" style="grid-column:span 2"><label>Tipo Veicoli</label><div class="val">${esc(r.tipo_veicoli||'—')}</div></div>
-      </div>
-    </div>
-    <div class="modal-section">
-      <h4>Dati Cliente</h4>
+      </div></div>
+    <div class="modal-section"><h4>Dati Cliente</h4>
       <div class="modal-grid">
         <div class="modal-field"><label>Azienda</label><div class="val">${esc(r.azienda||'—')}</div></div>
         <div class="modal-field"><label>Referente</label><div class="val">${esc([r.nome,r.cognome].filter(Boolean).join(' ')||'—')}</div></div>
         <div class="modal-field"><label>Telefono</label><div class="val">${esc(r.telefono||'—')}</div></div>
         <div class="modal-field"><label>Email</label><div class="val">${esc(r.email||'—')}</div></div>
         <div class="modal-field" style="grid-column:span 2"><label>Indirizzo</label><div class="val">${esc(r.indirizzo||'—')}</div></div>
-      </div>
-    </div>
-    ${(r.note||'').trim() ? `<div class="modal-section"><h4>Note</h4><div class="modal-note">${esc(r.note)}</div></div>` : ''}
-    <div class="modal-section">
-      <h4>Metadati</h4>
+      </div></div>
+    ${(r.note||'').trim()?`<div class="modal-section"><h4>Note</h4><div class="modal-note">${esc(r.note)}</div></div>`:''}
+    <div class="modal-section"><h4>Metadati</h4>
       <div class="modal-field"><label>Registrato il</label><div class="val">${esc(r.timestamp||'—')}</div></div>
-    </div>
-  `;
+    </div>`;
   document.getElementById('modal-overlay').classList.add('open');
 }
-function closeModal(e){ if(e.target===document.getElementById('modal-overlay')) closeModalDirect(); }
-function closeModalDirect(){ document.getElementById('modal-overlay').classList.remove('open'); }
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeModalDirect(); });
+function closeModal(e){if(e.target===document.getElementById('modal-overlay'))closeModalDirect();}
+function closeModalDirect(){document.getElementById('modal-overlay').classList.remove('open');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect();});
 
-// ── EXPORT ──
 function exportCSV(){
-  if(!filtered.length){ showToast('Nessun dato da esportare','error'); return; }
-  const keys = Object.keys(filtered[0]);
-  const csv = [keys.join(','), ...filtered.map(r=>keys.map(k=>'"'+(r[k]||'').replace(/"/g,'""')+'"').join(','))].join('\n');
-  const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
-  a.download = 'appuntamenti_italbatterie.csv';
-  a.click();
+  if(!filtered.length){showToast('Nessun dato da esportare','error');return;}
+  const keys=Object.keys(filtered[0]);
+  const csv=[keys.join(','),...filtered.map(r=>keys.map(k=>'"'+(r[k]||'').replace(/"/g,'""')+'"').join(','))].join('\n');
+  const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);a.download='appuntamenti_italbatterie.csv';a.click();
   showToast('Export completato ✓','success');
 }
 
-// ── HELPERS ──
-function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function emptyState(title,sub){ return `<div class="empty-state"><div class="icon">📋</div><h3>${title}</h3><p>${sub}</p></div>`; }
-function setLoading(v){
-  document.getElementById('loading').style.display = v?'flex':'none';
-  const btn = document.getElementById('refresh-btn');
-  btn.classList.toggle('spinning',v);
-}
-function showToast(msg, type=''){
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = 'toast show' + (type?' '+type:'');
-  clearTimeout(t._t);
-  t._t = setTimeout(()=>t.classList.remove('show'), 3000);
-}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function emptyState(t,s){return`<div class="empty-state"><div class="icon">📋</div><h3>${t}</h3><p>${s}</p></div>`;}
+function setLoading(v){document.getElementById('loading').style.display=v?'flex':'none';document.getElementById('refresh-btn').classList.toggle('spinning',v);}
+function showToast(msg,type=''){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show'+(type?' '+type:'');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),3000);}
 
-// Init view
 setView('list');
 </script>
 </body>
